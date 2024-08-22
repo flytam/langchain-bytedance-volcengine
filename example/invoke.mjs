@@ -1,6 +1,7 @@
 /* eslint-disable node/prefer-global/process */
 /* eslint-disable no-console */
 /* eslint-disable antfu/no-import-dist */
+import { HumanMessage } from '@langchain/core/messages'
 import { ChatVolcengine } from '../dist/index.mjs'
 import 'dotenv/config'
 
@@ -12,8 +13,12 @@ const chatModel = new ChatVolcengine({
 
 chatModel.bindTools([])
 
-const res = await chatModel.invoke([['human', 'I am an LLM']], {
-
+const res = await chatModel.invoke([new HumanMessage({ content: 'Hi! I\'m Bob' })], {
+  tools: [{
+    function: {
+      name: 'hhhh',
+    },
+  }],
 })
 
 console.log('ans', res)
