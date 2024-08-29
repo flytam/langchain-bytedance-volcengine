@@ -11,14 +11,6 @@ const chatModel = new ChatVolcengine({
   model: process.env.VOLCENGINE_MODEL,
 })
 
-chatModel.bindTools([])
-
-const res = await chatModel.invoke([new HumanMessage({ content: 'Hi! I\'m Bob' })], {
-  tools: [{
-    function: {
-      name: 'hhhh',
-    },
-  }],
-})
+const res = await chatModel.invoke([new HumanMessage({ content: 'Hi! I\'m Bob' })])
 
 console.log('ans', res)

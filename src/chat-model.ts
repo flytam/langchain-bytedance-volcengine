@@ -132,6 +132,7 @@ export class ChatVolcengine
             },
           }),
         })
+        await _runManager?.handleLLMNewToken(text)
       }
       catch {
         console.error(`Received a non-JSON parseable chunk: ${chunk}`)
